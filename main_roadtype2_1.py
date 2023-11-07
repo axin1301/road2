@@ -98,46 +98,46 @@ def main():
 
 
 
-        var1 = int(os.path.exists('../output/'+'lingqiuxian'+'_'+str(2021)+'_b2_recall.csv'))
-        # var2 = int(os.path.exists('../output/'+'liboxian'+'_'+str(2021)+'_b2_recall.csv'))
-        var2=var1
+        # var1 = int(os.path.exists('../output/'+'lingqiuxian'+'_'+str(2021)+'_b2_recall.csv'))
+        # # var2 = int(os.path.exists('../output/'+'liboxian'+'_'+str(2021)+'_b2_recall.csv'))
+        # var2=var1
 
-        while (var1+var2)!=2:
-            time.sleep(300)
-            var1 = int(os.path.exists('../output/'+'lingqiuxian'+'_'+str(2021)+'_b2_recall.csv'))
-            # var2 = int(os.path.exists('../output/'+'liboxian'+'_'+str(2021)+'_b2_recall.csv'))
-            var2=var1
+        # while (var1+var2)!=2:
+        #     time.sleep(300)
+        #     var1 = int(os.path.exists('../output/'+'lingqiuxian'+'_'+str(2021)+'_b2_recall.csv'))
+        #     # var2 = int(os.path.exists('../output/'+'liboxian'+'_'+str(2021)+'_b2_recall.csv'))
+        #     var2=var1
 
-            if var1==1 and var2==1:
-                break
+        #     if var1==1 and var2==1:
+        #         break
 
-        df_all = pd.DataFrame({})
-        for year in [2017,2021]:
-            for county in ['shufuxian','xixiangxian','guanghexian','danfengxian','jiangzixian','honghexian','liboxian','linquanxian','jingyuxian','lingqiuxian']:
-                df = pd.read_csv('../output/'+county+'_'+str(year)+'_d500_recall.csv')
-                df_all = pd.concat([df_all, df])
-        df_all.to_csv('validation_statistics_first10_d500_recall.csv', index=False)
+        # df_all = pd.DataFrame({})
+        # for year in [2017,2021]:
+        #     for county in ['shufuxian','xixiangxian','guanghexian','danfengxian','jiangzixian','honghexian','liboxian','linquanxian','jingyuxian','lingqiuxian']:
+        #         df = pd.read_csv('../output/'+county+'_'+str(year)+'_d500_recall.csv')
+        #         df_all = pd.concat([df_all, df])
+        # df_all.to_csv('validation_statistics_first10_d500_recall.csv', index=False)
 
-        df_all = pd.DataFrame({})
-        for year in [2017,2021]:
-            for county in ['shufuxian','xixiangxian','guanghexian','danfengxian','jiangzixian','honghexian','liboxian','linquanxian','jingyuxian','lingqiuxian']:
-                df = pd.read_csv('../output/'+county+'_'+str(year)+'_OSM_recall.csv')
-                df_all = pd.concat([df_all, df])
-        df_all.to_csv('validation_statistics_first10_OSM_recall.csv', index=False)
+        # df_all = pd.DataFrame({})
+        # for year in [2017,2021]:
+        #     for county in ['shufuxian','xixiangxian','guanghexian','danfengxian','jiangzixian','honghexian','liboxian','linquanxian','jingyuxian','lingqiuxian']:
+        #         df = pd.read_csv('../output/'+county+'_'+str(year)+'_OSM_recall.csv')
+        #         df_all = pd.concat([df_all, df])
+        # df_all.to_csv('validation_statistics_first10_OSM_recall.csv', index=False)
 
-        df_all = pd.DataFrame({})
-        for year in [2017,2021]:
-            for county in ['shufuxian','xixiangxian','guanghexian','danfengxian','jiangzixian','honghexian','liboxian','linquanxian','jingyuxian','lingqiuxian']:
-                df = pd.read_csv('../output/'+county+'_'+str(year)+'_b1_recall.csv')
-                df_all = pd.concat([df_all, df])
-        df_all.to_csv('validation_statistics_first10_b1_recall.csv', index=False)
+        # df_all = pd.DataFrame({})
+        # for year in [2017,2021]:
+        #     for county in ['shufuxian','xixiangxian','guanghexian','danfengxian','jiangzixian','honghexian','liboxian','linquanxian','jingyuxian','lingqiuxian']:
+        #         df = pd.read_csv('../output/'+county+'_'+str(year)+'_b1_recall.csv')
+        #         df_all = pd.concat([df_all, df])
+        # df_all.to_csv('validation_statistics_first10_b1_recall.csv', index=False)
 
-        df_all = pd.DataFrame({})
-        for year in [2017,2021]:
-            for county in ['shufuxian','xixiangxian','guanghexian','danfengxian','jiangzixian','honghexian','liboxian','linquanxian','jingyuxian','lingqiuxian']:
-                df = pd.read_csv('../output/'+county+'_'+str(year)+'_b2_recall.csv')
-                df_all = pd.concat([df_all, df])
-        df_all.to_csv('validation_statistics_first10_b2_recall.csv', index=False)
+        # df_all = pd.DataFrame({})
+        # for year in [2017,2021]:
+        #     for county in ['shufuxian','xixiangxian','guanghexian','danfengxian','jiangzixian','honghexian','liboxian','linquanxian','jingyuxian','lingqiuxian']:
+        #         df = pd.read_csv('../output/'+county+'_'+str(year)+'_b2_recall.csv')
+        #         df_all = pd.concat([df_all, df])
+        # df_all.to_csv('validation_statistics_first10_b2_recall.csv', index=False)
 
 
 if __name__=="__main__":
