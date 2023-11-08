@@ -23,7 +23,7 @@ def main():
     #test()
     with open("time_log_roadtype2_4.txt","w") as log_f:
         for year in [2017]:
-            for county in ['linquanxian','jingyuxian','lingqiuxian']:
+            for county in ['linquanxian']:
                 now_time = datetime.datetime.now()
                 # log_f.write(county + '   ' +str(year) + '  ' +str(now_time))
                 # log_f.write('\n')

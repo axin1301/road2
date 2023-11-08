@@ -1329,7 +1329,6 @@ def mapcompare_roadtype(data_path,dataset,solution,compute_mode,year,token):
     #         print(help_string)
     #         exit()
 
-    df = pd.DataFrame({})
 
     # first try
     # for i in [0.0001,0.001,0.01,0.1]: #
@@ -1342,7 +1341,8 @@ def mapcompare_roadtype(data_path,dataset,solution,compute_mode,year,token):
         if not os.path.exists('../temp_output_roadtype/GraphSamplingToolkit-main/'+dataset+'_'+str(roadclass)+'_'+str(year)+'/groundtruth/'+dataset+'_'+str(year)+'_edges_osm.txt'):
             continue
         print(dataset+'_'+str(roadclass)+'_'+str(year))
-        for i in [0.00005,0.0001,0.001,0.01]: #
+        df = pd.DataFrame({})
+        for i in [0.001,0.01]: #0.00005,0.0001,
             for b in [45]:#,30
                 for t in [i*10]:#
                     for c in ['knn']:#,'wmm'     
@@ -1421,5 +1421,5 @@ def mapcompare_roadtype(data_path,dataset,solution,compute_mode,year,token):
                                                 'c':[compare_mode],'MG':[MG],'root_loc1':[rootloc1],'root_loc2':[rootloc2],'NH':[NH],'KM':[KM],'year':[year],'county':[dataset],'roadclass':[roadclass],'pre':[pre],'rec':[rec],'f1s':[f1s]})
                             df = pd.concat([df,df_tmp])
 
-    print("[MapCompare] Operations completed in {sec:.0f} seconds.\n".format(sec=time.time() - start_time))
-    df.to_csv('../output/'+dataset+'_'+str(year)+'_'+token+'_recall.csv', index=False)
+        print("[MapCompare] Operations completed in {sec:.0f} seconds.\n".format(sec=time.time() - start_time))
+        df.to_csv('../output/'+dataset+'_'+str(year)+'_'+str(roadclass)+'_'+token+'_recall.csv', index=False)

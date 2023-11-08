@@ -1,8 +1,50 @@
 import pandas as pd
+import os
+
+
+for year in [2017,2021]:
+    for county in ['linquanxian','jingyuxian','lingqiuxian']:
+        for token in ['d500','OSM','b1','b2']:
+            df_all = pd.DataFrame({})
+            for roadclass in [49,41000,42000,43000,44000,45000,47000,51000,52000,53000,54000]:
+                if os.path.exists('../output/'+county+'_'+str(year)+'_'+str(roadclass)+'_'+token+'_recall.csv'):
+                    df = pd.read_csv('../output/'+county+'_'+str(year)+'_'+str(roadclass)+'_'+token+'_recall.csv')
+                    df_all = pd.concat([df_all, df])
+            df_all.to_csv('../output/'+county+'_'+str(year)+'_'+token+'_recall.csv', index=False)
+
+
+df_all = pd.DataFrame({})
+for year in [2017,2021]:
+    for county in ['shufuxian','xixiangxian','guanghexian','danfengxian','jiangzixian','honghexian','liboxian','linquanxian','jingyuxian','lingqiuxian']:
+        df = pd.read_csv('../output/'+county+'_'+str(year)+'_d500_recall.csv')
+        df_all = pd.concat([df_all, df])
+df_all.to_csv('validation_statistics_first10_d500_recall.csv', index=False)
+
+df_all = pd.DataFrame({})
+for year in [2017,2021]:
+    for county in ['shufuxian','xixiangxian','guanghexian','danfengxian','jiangzixian','honghexian','liboxian','linquanxian','jingyuxian','lingqiuxian']:
+        df = pd.read_csv('../output/'+county+'_'+str(year)+'_OSM_recall.csv')
+        df_all = pd.concat([df_all, df])
+df_all.to_csv('validation_statistics_first10_OSM_recall.csv', index=False)
+
+df_all = pd.DataFrame({})
+for year in [2017,2021]:
+    for county in ['shufuxian','xixiangxian','guanghexian','danfengxian','jiangzixian','honghexian','liboxian','linquanxian','jingyuxian','lingqiuxian']:
+        df = pd.read_csv('../output/'+county+'_'+str(year)+'_b1_recall.csv')
+        df_all = pd.concat([df_all, df])
+df_all.to_csv('validation_statistics_first10_b1_recall.csv', index=False)
+
+df_all = pd.DataFrame({})
+for year in [2017,2021]:
+    for county in ['shufuxian','xixiangxian','guanghexian','danfengxian','jiangzixian','honghexian','liboxian','linquanxian','jingyuxian','lingqiuxian']:
+        df = pd.read_csv('../output/'+county+'_'+str(year)+'_b2_recall.csv')
+        df_all = pd.concat([df_all, df])
+df_all.to_csv('validation_statistics_first10_b2_recall.csv', index=False)
+
 
 data = pd.read_csv('validation_statistics_first10_d500_recall.csv')
 # 按照指定列进行分组，计算每组的 pre, rec, f1s 值
-grouped = data.groupby(['county', 'roadclass', 'year', 'i']).apply(lambda x: pd.Series({
+grouped = data.groupby(['roadclass', 'year', 'i']).apply(lambda x: pd.Series({
     'pre': x['pre'].mean(),  # 计算 pre 值
     'rec': x['rec'].mean(),  # 计算 rec 值
     'f1s': x['f1s'].mean()  # 计算 f1s 值
@@ -18,7 +60,7 @@ grouped.to_csv('validation_statistics_first10_d500_recall_grouped.csv', index=Fa
 
 data = pd.read_csv('validation_statistics_first10_OSM_recall.csv')
 # 按照指定列进行分组，计算每组的 pre, rec, f1s 值
-grouped = data.groupby(['county', 'roadclass', 'year', 'i']).apply(lambda x: pd.Series({
+grouped = data.groupby(['roadclass', 'year', 'i']).apply(lambda x: pd.Series({
     'pre': x['pre'].mean(),  # 计算 pre 值
     'rec': x['rec'].mean(),  # 计算 rec 值
     'f1s': x['f1s'].mean()  # 计算 f1s 值
@@ -34,7 +76,7 @@ grouped.to_csv('validation_statistics_first10_OSM_recall_grouped.csv', index=Fal
 
 data = pd.read_csv('validation_statistics_first10_b1_recall.csv')
 # 按照指定列进行分组，计算每组的 pre, rec, f1s 值
-grouped = data.groupby(['county', 'roadclass', 'year', 'i']).apply(lambda x: pd.Series({
+grouped = data.groupby(['roadclass', 'year', 'i']).apply(lambda x: pd.Series({
     'pre': x['pre'].mean(),  # 计算 pre 值
     'rec': x['rec'].mean(),  # 计算 rec 值
     'f1s': x['f1s'].mean()  # 计算 f1s 值
@@ -50,7 +92,7 @@ grouped.to_csv('validation_statistics_first10_b1_recall_grouped.csv', index=Fals
 
 data = pd.read_csv('validation_statistics_first10_b2_recall.csv')
 # 按照指定列进行分组，计算每组的 pre, rec, f1s 值
-grouped = data.groupby(['county', 'roadclass', 'year', 'i']).apply(lambda x: pd.Series({
+grouped = data.groupby(['roadclass', 'year', 'i']).apply(lambda x: pd.Series({
     'pre': x['pre'].mean(),  # 计算 pre 值
     'rec': x['rec'].mean(),  # 计算 rec 值
     'f1s': x['f1s'].mean()  # 计算 f1s 值

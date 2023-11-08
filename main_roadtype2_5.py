@@ -21,9 +21,9 @@ import datetime
 def main():
     print("Hello World")
     #test()
-    with open("time_log_roadtype2_3.txt","w") as log_f:
+    with open("time_log_roadtype2_5.txt","w") as log_f:
         for year in [2021]:
-            for county in ['linquanxian']:
+            for county in ['jingyuxian','lingqiuxian']:
                 now_time = datetime.datetime.now()
                 # log_f.write(county + '   ' +str(year) + '  ' +str(now_time))
                 # log_f.write('\n')
